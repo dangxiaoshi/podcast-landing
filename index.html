@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>播客私教 · 当小时 — 高客单精准引流，私域老板的公域新阵地</title>
+  <meta name="description" content="喜马拉雅官方合作播客主，全平台粉丝破百万，教你用播客做高客单精准引流。不限次1v1 · 专属档案 · 社群陪跑 · 训练营复训 · 线下见面。" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #242424;
+      --text: #f0f0f0;
+      --muted: #888;
+      --accent: #e8a046;
+      --accent-dim: rgba(232, 160, 70, 0.12);
+      --red-dim: rgba(248, 113, 113, 0.1);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .logo-name { font-weight: 700; font-size: 15px; }
+    .nav-links {
+      display: flex; gap: 28px;
+      list-style: none; font-size: 14px; color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #000;
+      padding: 7px 18px; border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      transition: opacity .15s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px;
+    }
+    .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 96px 24px 80px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: -20%; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(circle, rgba(232,160,70,.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border); background: var(--surface);
+      padding: 6px 14px; border-radius: 999px;
+      font-size: 13px; color: var(--muted); margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; position: relative;
+    }
+    .badge-dot::after {
+      content: ''; position: absolute; inset: -3px;
+      border-radius: 50%; background: rgba(74,222,128,.3);
+      animation: ping 1.6s ease-in-out infinite;
+    }
+    @keyframes ping {
+      0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.9);opacity:0}
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 20px;
+    }
+    h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 17px; color: var(--muted);
+      max-width: 540px; margin: 0 auto 12px;
+    }
+    .hero-tagline {
+      font-size: 14px; color: #666;
+      max-width: 480px; margin: 0 auto 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #000;
+      padding: 13px 30px; border-radius: 10px;
+      font-weight: 700; font-size: 15px; transition: opacity .15s;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-secondary {
+      border: 1px solid var(--border);
+      padding: 13px 30px; border-radius: 10px;
+      font-size: 15px; color: var(--muted);
+      transition: border-color .15s, color .15s;
+    }
+    .btn-secondary:hover { border-color: #555; color: var(--text); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 60px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ─── WHY PODCAST ─── */
+    #why { background: var(--surface); }
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 48px;
+    }
+    .cg-card {
+      border: 1px solid var(--border); border-radius: 14px; padding: 28px;
+    }
+    .cg-card.podcast {
+      background: var(--accent-dim); border-color: var(--accent);
+    }
+    .cg-card.other { background: var(--bg); }
+    .cg-head {
+      font-size: 14px; font-weight: 700; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cg-rows { display: flex; flex-direction: column; gap: 14px; }
+    .cg-row { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
+    .cg-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .cg-label { font-weight: 600; margin-bottom: 2px; }
+    .cg-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .quote-banner {
+      margin-top: 32px;
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 28px;
+      background: var(--bg);
+      font-size: 16px; font-weight: 600; color: var(--accent);
+      text-align: center; letter-spacing: .01em;
+    }
+
+    /* ─── TEACHER ─── */
+    .teacher-wrap {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 40px; align-items: start; margin-top: 48px;
+    }
+    .teacher-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--accent-dim); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; flex-shrink: 0;
+    }
+    .teacher-name { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .teacher-title { font-size: 14px; color: var(--accent); margin-bottom: 16px; }
+    .teacher-creds { display: flex; flex-direction: column; gap: 8px; }
+    .cred-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 14px; line-height: 1.5;
+    }
+    .cred-star { color: var(--accent); flex-shrink: 0; }
+    .teacher-note {
+      margin-top: 20px; padding: 16px 20px;
+      border: 1px solid var(--border); border-radius: 10px;
+      background: var(--surface);
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+    .teacher-note strong { color: var(--text); }
+
+    /* ─── WHO IS THIS FOR ─── */
+    #who { background: var(--surface); }
+    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+    .who-card { border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+    .who-card.yes { background: var(--bg); border-color: var(--border); }
+    .who-card.no { background: var(--bg); }
+    .who-head { font-size: 15px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .audience-group { margin-bottom: 22px; }
+    .audience-group:last-child { margin-bottom: 0; }
+    .audience-niche {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px;
+    }
+    .niche-tag {
+      font-size: 12px; font-weight: 600;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(232,160,70,.3);
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .audience-pain { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .audience-answer { font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 4px; }
+    .no-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 14px; margin-bottom: 12px; line-height: 1.5;
+    }
+    .no-x { color: #f87171; flex-shrink: 0; font-weight: 700; }
+
+    /* ─── FOCUS ─── */
+    .focus-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 48px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .focus-card { background: var(--surface); padding: 32px 28px; }
+    .focus-icon { font-size: 28px; margin-bottom: 16px; }
+    .focus-title { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+    .focus-sub { font-size: 13px; color: var(--accent); margin-bottom: 16px; }
+    .focus-items { display: flex; flex-direction: column; gap: 10px; }
+    .focus-item { font-size: 13px; line-height: 1.5; }
+    .focus-item strong { color: var(--text); display: block; margin-bottom: 2px; }
+    .focus-item span { color: var(--muted); }
+
+    /* ─── BENEFITS ─── */
+    #benefits { background: var(--surface); }
+    .benefit-list { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
+    .benefit-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 32px;
+    }
+    .benefit-header {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;
+    }
+    .benefit-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--accent-dim); border: 1px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+    }
+    .benefit-title-wrap {}
+    .benefit-title { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+    .benefit-value { font-size: 12px; color: var(--muted); }
+    .benefit-value span { color: var(--accent); font-weight: 600; }
+    .benefit-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .bi {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 13px; line-height: 1.5;
+    }
+    .bi-check { color: var(--accent); flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+    .bi strong { display: block; color: var(--text); margin-bottom: 2px; }
+    .bi span { color: var(--muted); }
+
+    /* ─── DELIVERY ─── */
+    .delivery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2px; margin-top: 48px;
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    }
+    .delivery-card { background: var(--surface); padding: 28px 22px; text-align: center; }
+    .delivery-icon { font-size: 28px; margin-bottom: 12px; }
+    .delivery-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .delivery-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ─── PRICING ─── */
+    #pricing { text-align: center; }
+    .pricing-wrap { max-width: 520px; margin: 48px auto 0; }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--accent);
+      border-radius: 16px; padding: 40px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .pricing-glow {
+      position: absolute; top: -50%; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 300px;
+      background: radial-gradient(circle, rgba(232,160,70,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .price-badge {
+      display: inline-block;
+      background: #ef4444; color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px;
+      margin-bottom: 20px; animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+    .price-original { font-size: 16px; color: #555; text-decoration: line-through; margin-bottom: 4px; }
+    .price-amount { font-size: 4rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .price-period { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+    .price-note { font-size: 12px; color: #ef4444; margin-bottom: 28px; font-weight: 600; }
+    .price-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .price-includes { text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .price-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+    .check { color: var(--accent); }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--surface); }
+    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+    .faq-item {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .faq-q {
+      padding: 18px 22px; font-size: 15px; font-weight: 600;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-q::after { content: '+'; color: var(--muted); font-size: 20px; transition: transform .2s; }
+    details[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a { padding: 0 22px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ─── FINAL CTA ─── */
+    #cta { text-align: center; }
+    .cta-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 72px 40px;
+      position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(232,160,70,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 12px; }
+    .cta-sub { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px; text-align: center;
+      font-size: 13px; color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .compare-grid,
+      .who-grid,
+      .focus-grid { grid-template-columns: 1fr; }
+      .teacher-wrap { grid-template-columns: 1fr; }
+      .teacher-avatar { margin: 0 auto; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon">🎙</div>
+      <span class="logo-name">当小时播客私教</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#why">为什么做播客</a></li>
+      <li><a href="#who">适合谁</a></li>
+      <li><a href="#benefits">五大权益</a></li>
+      <li><a href="#pricing">早鸟报名</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#pricing" class="nav-cta">早鸟报名</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>喜马拉雅官方合作播客主 · 全平台粉丝破百万 · 91位学员已在路上</span>
+    </div>
+
+    <h1>
+      高客单精准引流<br />
+      <span>私域老板的公域新阵地</span>
+    </h1>
+
+    <p class="hero-sub">
+      不用化妆，不用布景，不用复杂后期。<br />
+      一部手机，一段声音，让客户主动找上门。
+    </p>
+    <p class="hero-tagline">助力私域老板打开公域大海</p>
+
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">早鸟价报名 →</a>
+      <a href="#why" class="btn-secondary">为什么是播客</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">百万+</div>
+        <div class="stat-label">全平台公域粉丝</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">350万</div>
+        <div class="stat-label">年播放小时数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1小时</div>
+        <div class="stat-label">私域发售收款40w</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">91位</div>
+        <div class="stat-label">私教学员在跑</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── WHY PODCAST ─── -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">为什么你该早点上车播客</div>
+    <h2 class="section-title">别的内容争抢 3 秒注意力<br />播客吹 30 分钟枕边风</h2>
+
+    <div class="compare-grid">
+      <div class="cg-card podcast">
+        <div class="cg-head">🎙 播客营销</div>
+        <div class="cg-rows">
+          <div class="cg-row">
+            <span class="cg-icon">✦</span>
+            <div>
+              <div class="cg-label">省钱省力</div>
+              <div class="cg-desc">不用化妆、不用布景、不用复杂后期，一部手机就够</div>
+            </div>
+          </div>
+          <div class="cg-row">
+            <span class="cg-icon">✦</span>
+            <div>
+              <div class="cg-label">深度沟通</div>
+              <div class="cg-desc">30分钟讲透一个产品，比100条短视频都有效</div>
+            </div>
+          </div>
+          <div class="cg-row">
+            <span class="cg-icon">✦</span>
+            <div>
+              <div class="cg-label">情感连接</div>
+              <div class="cg-desc">声音的魅力让用户感觉你在他耳边说话，信任感爆棚</div>
+            </div>
+          </div>
+          <div class="cg-row">
+            <span class="cg-icon">✦</span>
+            <div>
+              <div class="cg-label">长尾效应</div>
+              <div class="cg-desc">内容永不过时，一年后还能持续带来客户</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cg-card other">
+        <div class="cg-head">😮‍💨 其他营销方式</div>
+        <div class="cg-rows">
+          <div class="cg-row">
+            <span class="cg-icon" style="color:#f87171">✗</span>
+            <div>
+              <div class="cg-label">成本高</div>
+              <div class="cg-desc">视频要剪辑，图文要设计，处处都是时间和金钱成本</div>
+            </div>
+          </div>
+          <div class="cg-row">
+            <span class="cg-icon" style="color:#f87171">✗</span>
+            <div>
+              <div class="cg-label">表达受限</div>
+              <div class="cg-desc">1分钟短视频能讲啥？用户刷过就忘，留不下印象</div>
+            </div>
+          </div>
+          <div class="cg-row">
+            <span class="cg-icon" style="color:#f87171">✗</span>
+            <div>
+              <div class="cg-label">竞争激烈</div>
+              <div class="cg-desc">大家都在做，内容雷同，很难出圈，越来越难</div>
+            </div>
+          </div>
+          <div class="cg-row">
+            <span class="cg-icon" style="color:#f87171">✗</span>
+            <div>
+              <div class="cg-label">生命周期短</div>
+              <div class="cg-desc">今天的热点，明天就没人看了，一直要追热度</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-banner">
+      "别的内容争抢 3 秒注意力，播客吹 30 分钟枕边风"
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEACHER ─── -->
+<section id="teacher">
+  <div class="container">
+    <div class="section-label">谁来教你</div>
+    <h2 class="section-title">不是内容博主，是搞钱操盘手</h2>
+
+    <div class="teacher-wrap">
+      <div class="teacher-avatar">🎙</div>
+      <div>
+        <div class="teacher-name">当小时</div>
+        <div class="teacher-title">《搞钱搞流量》播客主理人 · 播客引流变现教练</div>
+        <div class="teacher-creds">
+          <div class="cred-item">
+            <span class="cred-star">★</span>
+            <span>喜马拉雅官方合作播客主，全平台公域粉丝破百万，私域发售一小时收款 40w</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-star">★</span>
+            <span>《搞钱搞流量》一年播放超 350 万小时，相当于陪伴听友 400 年</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-star">★</span>
+            <span>擅长"高客单精准引流"，尤其适配知识付费 · 敏感赛道 · 私域老板</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-star">★</span>
+            <span>12年自媒体实战经历：汉服摄影→直播带货→ToB运营→播客私教</span>
+          </div>
+        </div>
+        <div class="teacher-note">
+          她不只是教你做播客，更教你——<br />
+          <strong>怎么用一场访谈，搞定客户、代理、资源互换、品牌认知，一鱼多吃，全盘搞定。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO IS THIS FOR ─── -->
+<section id="who">
+  <div class="container">
+    <div class="section-label">适合谁</div>
+    <h2 class="section-title">一定要来的人 vs 劝退的人</h2>
+
+    <div class="who-grid">
+      <div class="who-card yes">
+        <div class="who-head">✅ 一定要来的人</div>
+
+        <div class="audience-group">
+          <div class="audience-niche">
+            <span class="niche-tag">医美</span>
+            <span class="niche-tag">保险</span>
+            <span class="niche-tag">金融</span>
+            <span class="niche-tag">大健康</span>
+            <span class="niche-tag">玄学</span>
+          </div>
+          <div class="audience-pain">💰 被平台限流，但很赚钱的人<br />朋友圈被删？视频被限流？文章老违规？</div>
+          <div class="audience-answer">播客 = 你的自由阵地！</div>
+        </div>
+
+        <div class="audience-group">
+          <div class="audience-niche">
+            <span class="niche-tag">留学</span>
+            <span class="niche-tag">情感咨询</span>
+            <span class="niche-tag">加盟</span>
+            <span class="niche-tag">培训</span>
+          </div>
+          <div class="audience-pain">💰 产品复杂，说不清楚的人<br />一条笔记讲不完？客户问题一大堆？总要打电话解释？</div>
+          <div class="audience-answer">播客 = 聊天式成交！</div>
+        </div>
+      </div>
+
+      <div class="who-card no">
+        <div class="who-head" style="color:#f87171">❌ 点名劝退的人</div>
+        <div class="no-item">
+          <span class="no-x">✖</span>
+          <div>
+            <div style="font-weight:600;">只想抒发情感的文艺青年</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:3px;">你要的是舞台，不是市场</div>
+          </div>
+        </div>
+        <div class="no-item">
+          <span class="no-x">✖</span>
+          <div>
+            <div style="font-weight:600;">负债想翻身，没钱没时间的人</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:3px;">播客是放大器，不是救命稻草</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding:16px;background:var(--surface);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.7">
+          我宁愿少招几个人，也不想让不适合的人进来浪费彼此的时间。<br />
+          加微信聊聊，我帮你判断你现在适不适合。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOCUS 3 ─── -->
+<section id="focus">
+  <div class="container">
+    <div class="section-label">聚焦三件事</div>
+    <h2 class="section-title">内容 + 流量 + 成交</h2>
+    <p class="section-sub">教你用播客替代朋友圈，用声音卖产品。</p>
+
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-icon">✅</div>
+        <div class="focus-title">内容</div>
+        <div class="focus-sub">说到客户心坎里，做成交播客不做无聊播客</div>
+        <div class="focus-items">
+          <div class="focus-item">
+            <strong>一开口就抓住人</strong>
+            <span>聊客户最关心的话题，不废话，不套路</span>
+          </div>
+          <div class="focus-item">
+            <strong>讲故事有套路</strong>
+            <span>教你写提纲、编故事，让人听不腻停不下来</span>
+          </div>
+          <div class="focus-item">
+            <strong>一次录音用半年</strong>
+            <span>内容复利玩法，素材永远不重样</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="focus-card">
+        <div class="focus-icon">🚀</div>
+        <div class="focus-title">流量</div>
+        <div class="focus-sub">自动涨粉不求人，不花钱投流也能火</div>
+        <div class="focus-items">
+          <div class="focus-item">
+            <strong>一条播客铺全网</strong>
+            <span>喜马拉雅、小宇宙、苹果播客……全覆盖</span>
+          </div>
+          <div class="focus-item">
+            <strong>平台不封号不限流</strong>
+            <span>随便挂微信，敏感话题也能讲，自由阵地</span>
+          </div>
+          <div class="focus-item">
+            <strong>越老越值钱</strong>
+            <span>用户从第1期开始听，信任感随时间爆棚</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="focus-card">
+        <div class="focus-icon">💰</div>
+        <div class="focus-title">成交</div>
+        <div class="focus-sub">半小时胜过十条笔记，听播客 = 预成交</div>
+        <div class="focus-items">
+          <div class="focus-item">
+            <strong>提前建立信任</strong>
+            <span>客户听你聊天，比看广告管用 100 倍</span>
+          </div>
+          <div class="focus-item">
+            <strong>有产品卖产品，没产品做分销</strong>
+            <span>播客就是你的成交利器</span>
+          </div>
+          <div class="focus-item">
+            <strong>嘉宾 = 潜在合伙人</strong>
+            <span>不只是聊天对象，更是商业资源</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFITS ─── -->
+<section id="benefits">
+  <div class="container">
+    <div class="section-label">五大核心权益</div>
+    <h2 class="section-title">不限次 1v1 · 专属档案 · 社群陪跑<br />训练营复训 · 线下见面</h2>
+
+    <div class="benefit-list">
+
+      <!-- 权益一 -->
+      <div class="benefit-card">
+        <div class="benefit-header">
+          <div class="benefit-num">01</div>
+          <div class="benefit-title-wrap">
+            <div class="benefit-title">全套方法论 + 终身免费复训</div>
+            <div class="benefit-value">价值 <span>¥2999</span>，系统掌握播客变现完整路径</div>
+          </div>
+        </div>
+        <div class="benefit-items">
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>付费训练营免费参加</strong>
+              <span>人生设计营/语音写作营/播客剪辑营/内容一鱼多吃营，未来新课同样免费复训</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>播客搞钱五步法</strong>
+              <span>定位→选题→邀约→访谈→转化，每一步都有详细 SOP</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>成功案例库</strong>
+              <span>优秀学员故事+赚钱实战案例，你的成功也会被收录推广</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>实用工具包</strong>
+              <span>访谈成交话术脚本 / 爆款标题&开场白模板 / 朋友圈引流文案库</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 权益二 -->
+      <div class="benefit-card">
+        <div class="benefit-header">
+          <div class="benefit-num">02</div>
+          <div class="benefit-title-wrap">
+            <div class="benefit-title">一对一私人定制方案</div>
+            <div class="benefit-value">价值 <span>¥2999</span>，单次咨询价 ¥888/次，本课程不限次数</div>
+          </div>
+        </div>
+        <div class="benefit-items">
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>无限次一对一咨询</strong>
+              <span>一年内想问就问，随时解决你的困惑，提前48小时预约</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>个性化诊断</strong>
+              <span>根据你的经历、产品、时间精力，制定专属播客定位和变现路径</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>分阶段规划</strong>
+              <span>1个月内容计划 / 3个月流量突破方案 / 1年成交闭环搭建路径</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 权益三 -->
+      <div class="benefit-card">
+        <div class="benefit-header">
+          <div class="benefit-num">03</div>
+          <div class="benefit-title-wrap">
+            <div class="benefit-title">高质量圈子资源</div>
+            <div class="benefit-value">价值 <span>¥2999</span>，和 90+ 位优秀的人一起成长</div>
+          </div>
+        </div>
+        <div class="benefit-items">
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>搞钱圆桌会</strong>
+              <span>每月跨行业实战案例拆解，你可以做主角，让大家帮你分析</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>日常答疑 + 每月语音答疑直播</strong>
+              <span>社群每日问题解答，"钱钱来电"语音答疑</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>线下聚会</strong>
+              <span>每季度一次线下听友会，已在深圳、杭州、成都等地举办</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>资源对接</strong>
+              <span>嘉宾推荐、剪辑师、设计师、直播发售站台等资源共享</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 权益四 -->
+      <div class="benefit-card">
+        <div class="benefit-header">
+          <div class="benefit-num">04</div>
+          <div class="benefit-title-wrap">
+            <div class="benefit-title">个人品牌打造支持</div>
+            <div class="benefit-value">价值 <span>¥2999</span>，从"有能力"到"有名气"</div>
+          </div>
+        </div>
+        <div class="benefit-items">
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>曝光机会</strong>
+              <span>优先上《搞钱搞流量》做嘉宾，公众号/朋友圈推荐和背书</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>学员案例专题报道</strong>
+              <span>你的成功故事会被整理成案例，在社群和公域传播</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>深度合作机会</strong>
+              <span>直播连麦、联合训练营、优秀者参与内容共创</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 权益五 -->
+      <div class="benefit-card">
+        <div class="benefit-header">
+          <div class="benefit-num">05</div>
+          <div class="benefit-title-wrap">
+            <div class="benefit-title">边学边赚分销权益</div>
+            <div class="benefit-value">价值 <span>¥2999</span>，降低学习成本，还能赚回学费</div>
+          </div>
+        </div>
+        <div class="benefit-items">
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>内部课程分销</strong>
+              <span>语音写作营、剪辑营等课程 CPS 最高 50%–100% 佣金</span>
+            </div>
+          </div>
+          <div class="bi">
+            <span class="bi-check">✦</span>
+            <div>
+              <strong>互相推广</strong>
+              <span>交付稳定的学员可以互换 CPS 资源，互为销售渠道，共同成长</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── DELIVERY ─── -->
+<section id="delivery">
+  <div class="container">
+    <div class="section-label">交付方式</div>
+    <h2 class="section-title">1年私教陪跑 + 终身社群</h2>
+    <p class="section-sub">陪跑结束后，自动进入「搞钱终身社群」，持续答疑 + 资源更新。</p>
+
+    <div class="delivery-grid">
+      <div class="delivery-card">
+        <div class="delivery-icon">🎥</div>
+        <div class="delivery-title">1v1 咨询</div>
+        <div class="delivery-desc">不限次数，随时连麦，点对点指导</div>
+      </div>
+      <div class="delivery-card">
+        <div class="delivery-icon">📂</div>
+        <div class="delivery-title">专属档案</div>
+        <div class="delivery-desc">飞书文档全程记录，确保落地执行</div>
+      </div>
+      <div class="delivery-card">
+        <div class="delivery-icon">👥</div>
+        <div class="delivery-title">富豪社群</div>
+        <div class="delivery-desc">圆桌讨论 + 互约播客，输出不孤单</div>
+      </div>
+      <div class="delivery-card">
+        <div class="delivery-icon">🏋️</div>
+        <div class="delivery-title">训练营免费学</div>
+        <div class="delivery-desc">人生设计、语音写作、播客剪辑…全年复训</div>
+      </div>
+      <div class="delivery-card">
+        <div class="delivery-icon">🤝</div>
+        <div class="delivery-title">线下听友会</div>
+        <div class="delivery-desc">搞钱搞流量主题，每年至少 4 场面对面</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-label" style="text-align:center">早鸟报名</div>
+    <h2 class="section-title" style="text-align:center">限时限量，持续涨价</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">内部引荐价，进群后自动享受所有权益。</p>
+
+    <div class="pricing-wrap">
+      <div class="pricing-card">
+        <div class="pricing-glow"></div>
+        <div class="price-badge">🔥 早鸟价限时开放</div>
+        <div class="price-original">原价 ¥8888</div>
+        <div class="price-amount">¥5200</div>
+        <div class="price-period">内部引荐价 · 1年深度陪跑 + 终身社群</div>
+        <div class="price-note">持续涨价，现在是最低价</div>
+
+        <hr class="price-divider" />
+
+        <div class="price-includes">
+          <div class="price-item"><span class="check">✦</span> 全套方法论 + 终身免费复训（¥2999价值）</div>
+          <div class="price-item"><span class="check">✦</span> 不限次一对一私人咨询（¥2999价值）</div>
+          <div class="price-item"><span class="check">✦</span> 高质量圈子 + 圆桌会 + 线下聚会（¥2999价值）</div>
+          <div class="price-item"><span class="check">✦</span> 个人品牌曝光与背书支持（¥2999价值）</div>
+          <div class="price-item"><span class="check">✦</span> 边学边赚 CPS 分销权益（¥2999价值）</div>
+          <div class="price-item"><span class="check">✦</span> 飞书专属档案全程追踪</div>
+          <div class="price-item"><span class="check">✦</span> 陪跑结束自动转入终身社群</div>
+        </div>
+
+        <a href="weixin://contacts/gaoqiantongxue" class="btn-primary" style="display:block;text-align:center;font-size:16px;padding:15px">
+          加微信报名 →
+        </a>
+        <p style="margin-top:12px;font-size:13px;color:var(--muted)">微信：gaoqiantongxue</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">你可能在想</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-q">我是做敏感行业的，播客平台会封我吗？</summary>
+        <div class="faq-a">
+          不会。这正是播客最大的优势——平台不限流、不封号，你可以随便留微信、随便讲敏感话题。医美、保险、金融、玄学的学员都在里面跑得很好。
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">我没有粉丝基础，可以做播客吗？</summary>
+        <div class="faq-a">
+          可以，而且从零开始反而没包袱。我2023年6月开始录播客，没露脸、没自己的产品，第一年就做到稳定月入5位数。你的行业经验本身就是内容。
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">需要专业设备吗？</summary>
+        <div class="faq-a">
+          一部手机 + 入耳式耳机就够了。听众买的是你的观点和经验，不是录音棚级别的音质。课程里有完整的手机录音优化方法。
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">课程是怎么上的？有固定上课时间吗？</summary>
+        <div class="faq-a">
+          没有固定时间表，按你的节奏来。1v1咨询提前约时间，社群随时提问，飞书档案记录每次进度。你不需要挤出"上课时间"，随时学随时用。
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">学完之后多久能有收入？</summary>
+        <div class="faq-a">
+          没有统一答案。你现有的客户基础越深、产品越清晰，变现越快。有学员1个月就有第一笔收入，也有3个月慢慢积累的。课程里有专门的"最快变现路径"，帮你找最适合当下的方式。
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">5200元贵不贵？</summary>
+        <div class="faq-a">
+          当当老师单次1v1咨询价格是¥888/次，不限次数算下来本身就值。5200你买的不是课，是一年的私人顾问 + 终身资源圈子。如果因此成交一个高客单客户，学费当天就回来了。
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-glow"></div>
+      <h2 class="cta-title">你的经验值钱<br />缺的只是一个传声筒</h2>
+      <p class="cta-sub">91位私域老板已经在用播客打开公域。现在轮到你。</p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">早鸟价报名 ¥5200 →</a>
+        <a href="#faq" class="btn-secondary">还有疑问</a>
+      </div>
+      <p style="margin-top:20px;font-size:13px;color:var(--muted)">
+        加微信直接聊：gaoqiantongxue
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>© 2026 当小时 dangxiaoshi · 播客《搞钱搞流量》· 微信 gaoqiantongxue</p>
+</footer>
+
+</body>
+</html>
