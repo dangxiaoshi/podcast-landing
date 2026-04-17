@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>变体 B — 播客电台</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0D1B2A;
+    --navy2:   #122233;
+    --navy3:   #1A2E42;
+    --text:    #EEF3FA;
+    --muted:   #7A9BB8;
+    --coral:   #FF5B3A;
+    --coral2:  #FF7C5F;
+    --teal:    #38BFA8;
+    --white:   #FFFFFF;
+    --sans:    "Noto Sans SC", "PingFang SC", sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0 32px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--white);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-brand .mic-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.75); }
+  }
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+    font-size: 14px; color: var(--muted);
+  }
+  .nav-links a { text-decoration: none; color: inherit; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--coral);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--coral2); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Waveform background SVG */
+  .hero-wave {
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 520px; height: 400px;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  /* Radial glow */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: -200px; top: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,91,58,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,91,58,0.1);
+    border: 1px solid rgba(255,91,58,0.3);
+    color: var(--coral);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .live-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--coral);
+    animation: pulse 1.5s infinite;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 6.5vw, 76px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+  .hero h1 .hl { color: var(--coral); }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 460px;
+    margin-bottom: 40px;
+  }
+
+  .btn-coral {
+    background: var(--coral);
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-coral:hover { background: var(--coral2); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--muted);
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 12px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--coral); color: var(--coral); }
+
+  /* Stats card */
+  .stats-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 28px 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .stats-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--teal));
+  }
+  .stats-head {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .stat-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-n {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--coral);
+    min-width: 72px;
+    line-height: 1;
+  }
+  .stat-n.teal { color: var(--teal); }
+  .stat-l { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* Waveform visual */
+  .waveform {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 36px;
+    margin: 24px 0 0;
+  }
+  .waveform span {
+    display: block;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--coral);
+    animation: wave 1.2s ease-in-out infinite;
+    opacity: 0.6;
+  }
+  .waveform span:nth-child(1)  { height: 40%; animation-delay: 0s; }
+  .waveform span:nth-child(2)  { height: 70%; animation-delay: 0.1s; }
+  .waveform span:nth-child(3)  { height: 55%; animation-delay: 0.2s; }
+  .waveform span:nth-child(4)  { height: 100%; animation-delay: 0.1s; opacity:1; }
+  .waveform span:nth-child(5)  { height: 80%; animation-delay: 0.3s; opacity:0.9; }
+  .waveform span:nth-child(6)  { height: 60%; animation-delay: 0.15s; }
+  .waveform span:nth-child(7)  { height: 45%; animation-delay: 0.25s; }
+  .waveform span:nth-child(8)  { height: 75%; animation-delay: 0.05s; }
+  .waveform span:nth-child(9)  { height: 55%; animation-delay: 0.2s; }
+  .waveform span:nth-child(10) { height: 35%; animation-delay: 0.3s; }
+  .waveform span:nth-child(11) { height: 65%; animation-delay: 0.1s; }
+  .waveform span:nth-child(12) { height: 85%; animation-delay: 0.0s; opacity:0.95; }
+  .waveform span:nth-child(13) { height: 50%; animation-delay: 0.22s; }
+  .waveform span:nth-child(14) { height: 40%; animation-delay: 0.35s; }
+  .waveform span:nth-child(15) { height: 70%; animation-delay: 0.12s; }
+  @keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.4); }
+  }
+
+  /* ── SECTION ── */
+  .section { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--coral);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .section h2 .hl { color: var(--coral); }
+
+  .lead-text {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.9;
+    margin-bottom: 48px;
+  }
+
+  .pain-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .pain-card {
+    background: var(--navy2);
+    padding: 24px 24px;
+    border-radius: 0;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .pain-card:hover { border-left-color: var(--coral); }
+  .pain-card:nth-child(1) { border-radius: 8px 0 0 0; }
+  .pain-card:nth-child(2) { border-radius: 0 8px 0 0; }
+  .pain-card:nth-child(3) { border-radius: 0 0 0 8px; }
+  .pain-card:nth-child(4) { border-radius: 0 0 8px 0; }
+  .pain-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .pain-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .pain-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+  /* ── PRICING ── */
+  .pricing-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 36px 36px;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--teal));
+  }
+  .pricing-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .pricing-amount {
+    font-size: 60px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .pricing-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+  .pricing-features { list-style: none; margin-bottom: 28px; }
+  .pricing-features li {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    color: var(--muted);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .pricing-features li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #060E16;
+    padding: 72px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer h2 {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+  }
+  .footer h2 .hl { color: var(--coral); }
+  .footer p { color: var(--muted); font-size: 16px; margin-bottom: 36px; }
+
+  /* badge */
+  .style-badge {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--coral);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    font-family: var(--sans);
+    z-index: 999;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pain-list { grid-template-columns: 1fr; }
+    .pain-card { border-radius: 6px !important; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="style-badge">变体 B — 播客电台</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="mic-dot"></span>
+      播客私教 · 当小时
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">服务</a></li>
+      <li><a href="#">案例</a></li>
+      <li><a href="#">价格</a></li>
+      <li><a href="#">关于</a></li>
+    </ul>
+    <a href="#" class="nav-cta">立即加入</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Waveform bg -->
+  <svg class="hero-wave" viewBox="0 0 520 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10"  y="120" width="14" height="160" rx="7" fill="white"/>
+    <rect x="34"  y="80"  width="14" height="240" rx="7" fill="white"/>
+    <rect x="58"  y="100" width="14" height="200" rx="7" fill="white"/>
+    <rect x="82"  y="60"  width="14" height="280" rx="7" fill="white"/>
+    <rect x="106" y="140" width="14" height="120" rx="7" fill="white"/>
+    <rect x="130" y="90"  width="14" height="220" rx="7" fill="white"/>
+    <rect x="154" y="50"  width="14" height="300" rx="7" fill="white"/>
+    <rect x="178" y="110" width="14" height="180" rx="7" fill="white"/>
+    <rect x="202" y="75"  width="14" height="250" rx="7" fill="white"/>
+    <rect x="226" y="130" width="14" height="140" rx="7" fill="white"/>
+    <rect x="250" y="95"  width="14" height="210" rx="7" fill="white"/>
+    <rect x="274" y="65"  width="14" height="270" rx="7" fill="white"/>
+    <rect x="298" y="115" width="14" height="170" rx="7" fill="white"/>
+    <rect x="322" y="85"  width="14" height="230" rx="7" fill="white"/>
+    <rect x="346" y="55"  width="14" height="290" rx="7" fill="white"/>
+    <rect x="370" y="105" width="14" height="190" rx="7" fill="white"/>
+    <rect x="394" y="125" width="14" height="150" rx="7" fill="white"/>
+    <rect x="418" y="70"  width="14" height="260" rx="7" fill="white"/>
+    <rect x="442" y="100" width="14" height="200" rx="7" fill="white"/>
+    <rect x="466" y="90"  width="14" height="220" rx="7" fill="white"/>
+  </svg>
+
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="live-badge">播客私教课程</div>
+        <h1>用声音交朋友<br><span class="hl">用故事，做生意</span></h1>
+        <p class="hero-sub">不追算法，不追量。一档播客帮你精准触达理想客户，1v1 私教带你从零跑通播客获客路径。</p>
+        <div>
+          <a href="#" class="btn-coral">预约首次诊断 ¥199</a>
+          <a href="#" class="btn-outline">查看学员成果</a>
+        </div>
+
+        <div class="waveform" style="margin-top:40px;">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="stats-card">
+        <div class="stats-head">学员实战数据</div>
+        <div class="stat-item">
+          <div class="stat-n">77</div>
+          <div class="stat-l">订阅也能<br>成交付费客户</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n">3周</div>
+          <div class="stat-l">最快见到<br>第一个付费线索</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n teal">20+</div>
+          <div class="stat-l">行业背景<br>1v1 学员</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n teal">¥0</div>
+          <div class="stat-l">最低获客成本<br>真实案例</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">痛点诊断</div>
+    <h2>你是否卡在<br><span class="hl">同一个地方？</span></h2>
+    <p class="lead-text">80% 的老板想用播客获客，但都卡在这里。</p>
+    <div class="pain-list">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <div class="pain-title">录了很多期，但没有客户来找我</div>
+        <div class="pain-desc">内容做了，平台也上了，就是没有人主动询价。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <div class="pain-title">不知道说什么才能吸引客户</div>
+        <div class="pain-desc">聊行业知识？分享干货？什么内容能让人想买单？</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <div class="pain-title">订阅量太少，觉得没资格变现</div>
+        <div class="pain-desc">一直在等"规模够大再商业化"——但那天不知道什么时候来。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">04</div>
+        <div class="pain-title">坚持不下去，三分钟热度</div>
+        <div class="pain-desc">没有系统，没有节奏，很快就被日常事务淹没。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex; gap:64px; flex-wrap:wrap; align-items:flex-start;">
+      <div>
+        <div class="section-eyebrow">开始很简单</div>
+        <h2>打通你的<br><span class="hl">播客获客漏斗</span></h2>
+        <p class="lead-text">从找到选题到成交第一个客户，全程陪跑。方向清晰后，再决定是否加入完整私教。</p>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:32px;font-weight:900;color:var(--coral)">3年+</div>
+            <div style="font-size:13px;color:var(--muted)">播客运营经验</div>
+          </div>
+          <div>
+            <div style="font-size:32px;font-weight:900;color:var(--teal)">20+</div>
+            <div style="font-size:13px;color:var(--muted)">行业背景覆盖</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-label">首次诊断</div>
+        <div class="pricing-amount">¥199</div>
+        <div class="pricing-sub">60分钟 · 1v1 · 带走行动路线图</div>
+        <ul class="pricing-features">
+          <li>播客定位 + 获客路径诊断</li>
+          <li>找到你的核心听众画像</li>
+          <li>内容到成交的完整漏斗设计</li>
+          <li>下一步 3 个具体行动</li>
+        </ul>
+        <a href="#" class="btn-coral" style="width:100%;text-align:center;display:block;">预约诊断</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <h2>用声音交朋友<br><span class="hl">用故事做生意</span></h2>
+    <p>不追流量，不烧广告。一档播客，低成本找到精准客户。</p>
+    <a href="#" class="btn-coral" style="font-size:16px;padding:14px 44px;">预约首次 1v1 诊断</a>
+  </div>
+</footer>
+
+</body>
+</html>
