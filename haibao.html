@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>AI播客变现私教</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 750px;
+  background: #060606;
+  color: #f0e8d8;
+  font-family: "PingFang SC", "Noto Serif SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+}
+
+/* ═══ GOLD SYSTEM ═══ */
+:root {
+  --g1: #7a5010;
+  --g2: #c98c20;
+  --g3: #f0c84a;
+  --g4: #fde98a;
+  --bg0: #060606;
+  --bg1: #0c0b09;
+  --bg2: #111008;
+  --card: #100f0c;
+  --border: #2a2510;
+  --border-g: rgba(200,140,32,0.35);
+  --muted: #9a8870;
+}
+
+.gt {
+  background: linear-gradient(135deg, var(--g2) 0%, var(--g4) 45%, var(--g2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══ ORNAMENTS ═══ */
+.orn {
+  text-align: center;
+  color: var(--g2);
+  font-size: 13px;
+  letter-spacing: 6px;
+  margin: 0 auto;
+}
+.orn-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.orn-line::before,
+.orn-line::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--g2));
+}
+.orn-line::after {
+  background: linear-gradient(90deg, var(--g2), transparent);
+}
+.orn-diamond {
+  color: var(--g3);
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+/* ═══ SECTION HEADER ═══ */
+.sec-hd {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.sec-hd-label {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--g2);
+  border-top: 1px solid var(--border-g);
+  border-bottom: 1px solid var(--border-g);
+  padding: 5px 20px;
+  margin-bottom: 14px;
+}
+.sec-hd-title {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+.sec-hd-sub {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* ═══ TOP BAR ═══ */
+.top-bar {
+  background: var(--bg0);
+  padding: 16px 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-g);
+}
+.top-left {
+  font-size: 12px;
+  color: var(--g2);
+  letter-spacing: 4px;
+}
+.top-right {
+  font-size: 11px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 3px 12px;
+  border-radius: 2px;
+  letter-spacing: 2px;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(200,140,32,0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0900 0%, #060606 100%);
+  padding: 60px 50px 56px;
+  text-align: center;
+}
+.hero-top-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+  color: var(--g2);
+  font-size: 11px;
+  letter-spacing: 5px;
+}
+.hero-top-line::before,
+.hero-top-line::after {
+  content: '◆ ◆';
+  font-size: 7px;
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+.hero-title {
+  font-size: 74px;
+  font-weight: 900;
+  font-family: 'Noto Serif TC', 'STSong', 'SimSun', serif;
+  letter-spacing: 10px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  text-shadow: 0 0 60px rgba(200,140,32,0.3);
+}
+.hero-title-en {
+  font-size: 11px;
+  letter-spacing: 8px;
+  color: var(--muted);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.hero-border-box {
+  border: 1px solid var(--border-g);
+  padding: 22px 36px;
+  margin: 0 auto 0;
+  max-width: 560px;
+  position: relative;
+}
+.hero-border-box::before {
+  content: '◆';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg0);
+  padding: 0 8px;
+  color: var(--g2);
+  font-size: 12px;
+}
+.hero-tagline {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.9;
+  letter-spacing: 1px;
+}
+
+/* ═══ NUMBERS ═══ */
+.numbers {
+  display: flex;
+  background: var(--bg0);
+  border-top: 1px solid var(--border-g);
+  border-bottom: 1px solid var(--border-g);
+}
+.num-wrap {
+  flex: 1;
+  padding: 46px 16px;
+  text-align: center;
+  border-right: 1px solid var(--border-g);
+  position: relative;
+}
+.num-wrap:last-child { border-right: none; }
+.num-val {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(200,140,32,0.4);
+}
+.num-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+/* ═══ SECTION SHELL ═══ */
+.sec { padding: 60px 48px; }
+.sec-dark { background: var(--bg1); }
+
+/* ═══ PAIN POINTS ═══ */
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.pain-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--g2);
+  padding: 26px 22px;
+}
+.pain-icon-wrap {
+  width: 40px;
+  height: 40px;
+  background: rgba(200,140,32,0.1);
+  border: 1px solid var(--border-g);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.pain-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: #f0e8d8;
+}
+.pain-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ═══ FOUNDER ═══ */
+.founder-wrap {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+.founder-photo-wrap {
+  flex-shrink: 0;
+  position: relative;
+}
+.founder-photo-border {
+  width: 158px;
+  height: 158px;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--g2), var(--g4), var(--g2));
+  border-radius: 50%;
+}
+.founder-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--bg2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--g2);
+  text-align: center;
+  line-height: 1.7;
+}
+.founder-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.founder-right { flex: 1; }
+.founder-name {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+.founder-handle {
+  font-size: 12px;
+  color: var(--g2);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.founder-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.fstat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+}
+.fstat-val {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+.fstat-lbl { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+.founder-bio {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.9;
+  padding-left: 14px;
+  border-left: 2px solid var(--g2);
+}
+
+/* ═══ BENEFITS ═══ */
+.benefit-list { display: flex; flex-direction: column; gap: 12px; }
+.benefit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  gap: 0;
+}
+.benefit-num-col {
+  width: 56px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, var(--g1) 0%, #3a2008 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.benefit-num-text {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--g4);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.benefit-num-zh {
+  font-size: 10px;
+  color: rgba(253,233,138,0.5);
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+}
+.benefit-body {
+  flex: 1;
+  padding: 22px 22px;
+  border-left: 1px solid rgba(200,140,32,0.2);
+}
+.benefit-tag {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--g2);
+  border: 1px solid var(--border-g);
+  padding: 2px 8px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.benefit-title {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  color: #f5ede0;
+}
+.benefit-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+/* ═══ TESTIMONIALS ═══ */
+.test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.test-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--g1);
+  padding: 20px 18px;
+}
+.test-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.test-tag {
+  font-size: 10px;
+  color: var(--g2);
+  background: rgba(200,140,32,0.08);
+  border: 1px solid var(--border-g);
+  padding: 2px 7px;
+  letter-spacing: 1px;
+}
+.test-q {
+  font-size: 12px;
+  color: #c0b090;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.test-q::before { content: '\300C'; color: var(--g3); }
+.test-q::after  { content: '\300D'; color: var(--g3); }
+.test-who { font-size: 11px; color: #555; }
+.test-who strong { color: #999; }
+
+/* ═══ SUITABLE ═══ */
+.suit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.suit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px 22px;
+}
+.suit-hd {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.suit-item {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.6;
+}
+.suit-yes::before { content: '◆'; color: var(--g2); font-size: 8px; flex-shrink: 0; margin-top: 4px; }
+.suit-no::before  { content: '◇'; color: #333; font-size: 8px; flex-shrink: 0; margin-top: 4px; }
+
+/* ═══ PRICE ═══ */
+.price-sec {
+  background:
+    radial-gradient(ellipse at 50% 110%, rgba(200,140,32,0.12) 0%, transparent 65%),
+    var(--bg0);
+  padding: 70px 50px 60px;
+  text-align: center;
+  border-top: 1px solid var(--border-g);
+}
+.price-eyebrow {
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+.price-orig {
+  font-size: 16px;
+  color: #3a3530;
+  margin-bottom: 8px;
+}
+.price-orig span { text-decoration: line-through; }
+.price-main {
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 0 50px rgba(200,140,32,0.4);
+  letter-spacing: 2px;
+}
+.price-suffix { font-size: 24px; font-weight: 400; letter-spacing: 0; }
+.price-period {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  margin-bottom: 28px;
+}
+.price-alarm {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--g3);
+  border: 1px solid var(--border-g);
+  padding: 10px 32px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.price-alarm::before,
+.price-alarm::after {
+  content: '◆';
+  font-size: 8px;
+  color: var(--g2);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.price-alarm::before { left: 12px; }
+.price-alarm::after  { right: 12px; }
+.price-perks {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 44px;
+}
+.perk { text-align: center; font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+.perk-icon { font-size: 24px; margin-bottom: 6px; }
+.price-contact { font-size: 13px; color: var(--muted); letter-spacing: 2px; margin-bottom: 10px; }
+.price-wechat {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+/* ═══ FOOTER ═══ */
+.footer {
+  background: var(--bg0);
+  padding: 52px 50px;
+  text-align: center;
+  border-top: 1px solid var(--border-g);
+}
+.footer-main {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 40px rgba(200,140,32,0.3);
+}
+.footer-sub {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-left">搞钱搞流量 · GAOQIAN</div>
+  <div class="top-right">2026 私教招募</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top-line">PODCAST × AI × COACHING</div>
+  <h1 class="hero-title gt">AI播客<br>變現私教</h1>
+  <div class="hero-title-en">AI PODCAST MONETIZATION COACHING</div>
+  <div class="hero-border-box">
+    <div class="hero-tagline">以播客为起点<br>搭建你的内容引流 · 销转成交 · 产品交付体系</div>
+    <div class="hero-sub">不是教你怎么做播客<br>而是用播客建立信任、用 AI 放大效率<br>用私教陪跑完成落地的内容变现体系</div>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="num-wrap">
+    <div class="num-val gt">100+</div>
+    <div class="num-label">1v1 私教学员</div>
+  </div>
+  <div class="num-wrap">
+    <div class="num-val gt">3天</div>
+    <div class="num-label">最快见到付费线索</div>
+  </div>
+  <div class="num-wrap">
+    <div class="num-val gt">30+</div>
+    <div class="num-label">行业背景覆盖</div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-hd-label">PAIN POINT</div>
+    <div class="sec-hd-title gt">如果你面临以下卡点</div>
+  </div>
+  <div class="orn-line"><span class="orn-diamond">◆ ◆ ◆</span></div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon-wrap">💬</div>
+      <div class="pain-title">有产品，但说不清楚</div>
+      <div class="pain-desc">朋友圈发了很多，客户还是不知道你到底能帮他解决什么。</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon-wrap">🔒</div>
+      <div class="pain-title">有专业，但没人信任</div>
+      <div class="pain-desc">短视频太碎，图文太浅，复杂服务很难靠几句话成交。</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon-wrap">📱</div>
+      <div class="pain-title">想做公域，不想日更</div>
+      <div class="pain-desc">不想被算法绑架，也不想每天追热点、拍视频、剪片子。</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon-wrap">🧭</div>
+      <div class="pain-title">一个人摸索，太慢</div>
+      <div class="pain-desc">没有人告诉你哪一步走错了。内耗、拖延、然后放弃。</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<div class="sec sec-dark">
+  <div class="sec-hd">
+    <div class="sec-hd-label">YOUR COACH</div>
+    <div class="sec-hd-title gt">谁来带你？</div>
+  </div>
+  <div class="orn-line"><span class="orn-diamond">◆ ◆ ◆</span></div>
+  <div class="founder-wrap">
+    <div class="founder-photo-wrap">
+      <div class="founder-photo-border">
+        <div class="founder-photo-inner">
+          <img src="teacher-nobg.png" alt="当小时"
+            onerror="this.style.display='none';this.parentNode.innerHTML='当小时<br>@dangxiaoshi'">
+        </div>
+      </div>
+    </div>
+    <div class="founder-right">
+      <div class="founder-name gt">当小时</div>
+      <div class="founder-handle">@dangxiaoshi · 《搞钱搞流量》播客主</div>
+      <div class="founder-stats">
+        <div class="fstat">
+          <div class="fstat-val gt">400+ 期</div>
+          <div class="fstat-lbl">实战播客</div>
+        </div>
+        <div class="fstat">
+          <div class="fstat-val gt">600万小时</div>
+          <div class="fstat-lbl">累计播放时长</div>
+        </div>
+        <div class="fstat">
+          <div class="fstat-val gt">100+</div>
+          <div class="fstat-lbl">1v1 私教学员</div>
+        </div>
+        <div class="fstat">
+          <div class="fstat-val gt">30+ 行业</div>
+          <div class="fstat-lbl">覆盖学员背景</div>
+        </div>
+      </div>
+      <div class="founder-bio">不只是教你做播客，是用播客撬动整个内容创业的飞轮。风格：快、准、狠。不说废话，直接拆解你的问题，逼你当天行动。</div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-hd-label">CORE BENEFITS</div>
+    <div class="sec-hd-title gt">你会获得什么</div>
+    <div class="sec-hd-sub">六大核心权益</div>
+  </div>
+  <div class="orn-line"><span class="orn-diamond">◆ ◆ ◆</span></div>
+  <div class="benefit-list">
+
+    <div class="benefit-card">
+      <div class="benefit-num-col">
+        <div class="benefit-num-text">01</div>
+        <div class="benefit-num-zh">权益一</div>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-tag">无限次</div>
+        <div class="benefit-title">1v1 变现咨询</div>
+        <div class="benefit-desc">你是谁、帮谁、卖什么、怎么公私域联动成交——不限次数，想问就问。每次咨询直接针对你的现状，不讲通用方法论。</div>
+      </div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-num-col">
+        <div class="benefit-num-text">02</div>
+        <div class="benefit-num-zh">权益二</div>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-tag">学员专属软件</div>
+        <div class="benefit-title">定制 AI 播客工作台</div>
+        <div class="benefit-desc">当小时亲手搭建的专属 AI 工具，帮你生成选题、提纲、标题、开场白、复盘和二次分发内容。别人用通用 ChatGPT，你用为播客变现专门调教的工具。</div>
+      </div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-num-col">
+        <div class="benefit-num-text">03</div>
+        <div class="benefit-num-zh">权益三</div>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-tag">免费复训</div>
+        <div class="benefit-title">内容成交训练营</div>
+        <div class="benefit-desc">AI 播客剪辑营、人生设计营、语音写作营、内容一鱼多吃营……所有现有及未来新课，免费参加，不限次数复训。</div>
+      </div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-num-col">
+        <div class="benefit-num-text">04</div>
+        <div class="benefit-num-zh">权益四</div>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-tag">背书 + 推荐</div>
+        <div class="benefit-title">播客流量冷启动支持</div>
+        <div class="benefit-desc">播客 / 公众号 / 朋友圈 / 听友群 / 发售推荐和背书，以及内容共创机会。你的内容有当小时的流量池在背后撑着。</div>
+      </div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-num-col">
+        <div class="benefit-num-text">05</div>
+        <div class="benefit-num-zh">权益五</div>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-tag">最高 100% 佣金</div>
+        <div class="benefit-title">边学边赚分销权益</div>
+        <div class="benefit-desc">内部课程 CPS 佣金最高 50%–100%。学费可以靠推荐赚回来，还能搭建自己的被动收入渠道。</div>
+      </div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-num-col">
+        <div class="benefit-num-text">06</div>
+        <div class="benefit-num-zh">权益六</div>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-tag">100+ 播客主</div>
+        <div class="benefit-title">富豪播客串台圈子</div>
+        <div class="benefit-desc">100+ 播客主一起打卡、复盘、报喜、串台。互换 CPS 资源，互为销售渠道。不是学员群，是你的商业朋友圈。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="sec sec-dark">
+  <div class="sec-hd">
+    <div class="sec-hd-label">RESULTS</div>
+    <div class="sec-hd-title gt">学员战报</div>
+  </div>
+  <div class="orn-line"><span class="orn-diamond">◆ ◆ ◆</span></div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-tags">
+        <span class="test-tag">玄学</span>
+        <span class="test-tag">3400+ 订阅</span>
+        <span class="test-tag">3w+ 可归因变现</span>
+      </div>
+      <p class="test-q">做了17集，小宇宙3400+订阅，三平台累计播放21w+，公开可归因直接变现3w+。</p>
+      <div class="test-who"><strong>FishFish 鱼鱼</strong> · 心理商业教练</div>
+    </div>
+    <div class="test-card">
+      <div class="test-tags">
+        <span class="test-tag">77订阅</span>
+        <span class="test-tag">成交2单</span>
+      </div>
+      <p class="test-q">播客订阅量才77个，3个月加私8人，转咨询成交2单+打赏1个。</p>
+      <div class="test-who"><strong>Sammi</strong> · 自媒体创业者</div>
+    </div>
+    <div class="test-card">
+      <div class="test-tags">
+        <span class="test-tag">3天有线索</span>
+      </div>
+      <p class="test-q">剪完前10期刚开始发，3天时间已经有两个人添加，能明显感觉到强烈的付费愿望。</p>
+      <div class="test-who"><strong>静水</strong> · 财务轻创业导师</div>
+    </div>
+    <div class="test-card">
+      <div class="test-tags">
+        <span class="test-tag">2小时成交4位数</span>
+      </div>
+      <p class="test-q">录完节目，听众下午4点加微信、6点直接转款，沟通1小时成交4位数。</p>
+      <div class="test-who"><strong>富婆橙</strong> · 美业教练</div>
+    </div>
+    <div class="test-card">
+      <div class="test-tags">
+        <span class="test-tag">第二月破万</span>
+      </div>
+      <p class="test-q">第一个月接单3000，第二个月突破1万。负债的时候，播客是我唯一看见出路的方向。</p>
+      <div class="test-who"><strong>荔枝</strong> · 04年在校生 → 播客剪辑手</div>
+    </div>
+    <div class="test-card">
+      <div class="test-tags">
+        <span class="test-tag">宝妈</span>
+        <span class="test-tag">首播成交</span>
+        <span class="test-tag">变现6000+</span>
+      </div>
+      <p class="test-q">播客发出来，当晚就被追着打钱——研究了半年公域引流，不如一期播客的转化率高。</p>
+      <div class="test-who"><strong>锦绣</strong> · 宝妈 → 年度私教学员</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUITABLE -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-hd-label">FOR WHO</div>
+    <div class="sec-hd-title gt">适合 · 不适合</div>
+  </div>
+  <div class="orn-line"><span class="orn-diamond">◆ ◆ ◆</span></div>
+  <div class="suit-grid">
+    <div class="suit-card">
+      <div class="suit-hd gt">✦ 适合这些人</div>
+      <div class="suit-item suit-yes">知识创业者、咨询师、教练、顾问、培训老师</div>
+      <div class="suit-item suit-yes">玄学、保险、金融、大健康、情感等高信任成本行业</div>
+      <div class="suit-item suit-yes">有技能，想用内容建立影响力、获精准客户</div>
+      <div class="suit-item suit-yes">想搭建长期成交系统，不靠每天硬推</div>
+    </div>
+    <div class="suit-card">
+      <div class="suit-hd" style="color:#444">✦ 不适合这些人</div>
+      <div class="suit-item suit-no">期待一夜爆火，但不想赚钱的人</div>
+      <div class="suit-item suit-no">没有时间行动，且负债累累的人</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE -->
+<div class="price-sec">
+  <div class="price-eyebrow">限时招募 · 满额即止</div>
+  <div class="price-orig">原价 <span>¥8888</span></div>
+  <div class="price-main gt">¥5200<span class="price-suffix"> 元</span></div>
+  <div class="price-period">1年深度陪跑 + 终身社群</div>
+  <div class="price-alarm">5月15日涨价至 ¥5800</div>
+  <div class="price-perks">
+    <div class="perk"><div class="perk-icon">🎙</div>无限次 1v1</div>
+    <div class="perk"><div class="perk-icon">🤖</div>专属AI工作台</div>
+    <div class="perk"><div class="perk-icon">👥</div>终身社群</div>
+    <div class="perk"><div class="perk-icon">📚</div>训练营复训</div>
+  </div>
+  <div class="price-contact">加微信了解当期名额</div>
+  <div class="price-wechat gt">gaoqiantongxue</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="orn-line" style="margin-bottom:24px"><span class="orn-diamond">◆ ◆ ◆</span></div>
+  <div class="footer-main gt">开口，就是你的护城河</div>
+  <div class="footer-sub">等待不会让你的播客更好。行动才会。</div>
+</div>
+
+</body>
+</html>
